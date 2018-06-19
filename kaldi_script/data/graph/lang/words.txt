@@ -1,0 +1,13 @@
+<eps> 0
+<SPOKEN_NOISE> 1
+DO 2
+FA 3
+LA 4
+MI 5
+RE 6
+SI 7
+SIL 8
+SOL 9
+#0 10
+<s> 11
+</s> 12

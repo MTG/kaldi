@@ -1,0 +1,10 @@
+<SPOKEN_NOISE> <SPOKEN_NOISE> sil
+<eps> <eps> sil
+DO DO do
+FA FA fa
+LA LA la
+MI MI mi
+RE RE re
+SI SI si
+SIL SIL sil
+SOL SOL sol

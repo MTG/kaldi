@@ -1,0 +1,8 @@
+shared split sil
+shared split do
+shared split re
+shared split mi
+shared split fa
+shared split sol
+shared split la
+shared split si
