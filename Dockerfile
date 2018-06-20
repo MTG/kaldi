@@ -2,7 +2,7 @@ FROM mtgupf/essentia:ubuntu16.04-python3
 
 RUN apt-get update && apt-get install --no-install-recommends -y \
         zlib1g-dev automake autoconf libtool subversion libatlas3-base \
-        libatlas-base-dev git build-essential wget python\
+        libatlas-base-dev build-essential wget python\
         python-setuptools python3-setuptools python3-pip \
     && git clone --depth 1 https://github.com/kaldi-asr/kaldi.git /tmp/kaldi \
     && cd /tmp/kaldi/tools \
@@ -26,7 +26,6 @@ RUN apt-get update && apt-get install --no-install-recommends -y \
     && apt-get purge -y \
         ca-certificates \
         build-essential \
-        git \
         subversion \
         zlib1g-dev \
         automake \
@@ -40,5 +39,3 @@ ENV PATH="/opt/kaldi/bin:${PATH}"
 ENV LD_LIBRARY_PATH="/opt/kaldi/lib:${LD_DIBRARY_PATH}"
 
 ADD kaldi_script /opt/kaldi/scripts
-
-ENTRYPOINT ["/bin/bash", "-c"]
