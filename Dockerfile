@@ -35,6 +35,9 @@ RUN apt-get update && apt-get install --no-install-recommends -y \
         python \
         python3
 
+# Rong-specific requirement for scripts taken from examples directory
+RUN mkdir -p /opt/kaldi/tools/config && touch /opt/kaldi/tools/config/common_path.sh
+
 ENV PATH="/opt/kaldi/bin:${PATH}"
 ENV LD_LIBRARY_PATH="/opt/kaldi/lib:${LD_DIBRARY_PATH}"
 
