@@ -1,39 +1,16 @@
 FROM mtgupf/essentia:ubuntu16.04-python3
 
+WORKDIR /tmp
+ADD install_kaldi.sh .
+
 RUN apt-get update && apt-get install --no-install-recommends -y \
         zlib1g-dev automake autoconf libtool subversion libatlas3-base \
         libatlas-base-dev build-essential wget python\
         python-setuptools python3-setuptools python3-pip \
-    && git clone --depth 1 https://github.com/kaldi-asr/kaldi.git /tmp/kaldi \
-    && cd /tmp/kaldi/tools \
-    && make -j$(nproc) \
-    && mkdir -p /opt/kaldi/bin /opt/kaldi/lib /opt/kaldi/include \
-    && mv openfst/bin/* sctk/bin/* sph2pipe*/sph2pipe /opt/kaldi/bin \
-    && mv openfst/lib/* /opt/kaldi/lib \
-    && mv openfst/include/* /opt/kaldi/include \
-    && rmdir openfst/lib openfst/include \
-    && ln -s /opt/kaldi/lib openfst/lib \
-    && ln -s /opt/kaldi/include openfst/include \
-    && cd ../src \
-    && ./configure --shared \
-    && sed 's|\( -g # -O0.*\)| -O3 -DNDEBUG #\1|' -i~ kaldi.mk \
-    && make depend -j$(nproc) \
-    && make -j$(nproc) \
-    && for f in $(find . -type f -executable | grep -F bin/); do echo $f $(file $f); done | grep 'ELF 64-bit LSB executable' | sed 's| .*||' | xargs mv -t /opt/kaldi/bin \
-    && mv $(realpath lib/*) /opt/kaldi/lib \
-    && cd \
-    && rm -rf /tmp/kaldi \
-    && apt-get purge -y \
-        ca-certificates \
-        build-essential \
-        subversion \
-        zlib1g-dev \
-        automake \
-        autoconf \
-        wget \
-        libtool \
-        python \
-        python3
+    && sh install_kaldi.sh \
+    && apt-get purge -y ca-certificates build-essential subversion \
+        zlib1g-dev automake autoconf wget libtool python \
+    && rm -rf /var/lib/apt/lists/*
 
 # Rong-specific requirement for scripts taken from examples directory
 RUN mkdir -p /opt/kaldi/tools/config && touch /opt/kaldi/tools/config/common_path.sh
