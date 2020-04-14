@@ -7,7 +7,7 @@ RUN apt-get update && apt-get install --no-install-recommends -y \
         zlib1g-dev automake autoconf libtool subversion libatlas3-base \
         libatlas-base-dev build-essential wget python\
         python-setuptools python3-setuptools python3-pip unzip sox \
-    && sh install_kaldi.sh \
+    && sh -e install_kaldi.sh \
     && apt-get purge -y ca-certificates build-essential subversion \
         zlib1g-dev automake autoconf wget libtool python \
     && rm -rf /var/lib/apt/lists/*
