@@ -10,6 +10,7 @@ RUN apt-get update && apt-get install --no-install-recommends -y \
         libtool \
         libatlas3-base \
         libatlas-base-dev \
+        gfortran \
         python3-setuptools \
         python3-pip \
         python \
