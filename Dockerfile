@@ -1,4 +1,4 @@
-FROM mtgupf/essentia:ubuntu16.04-python3
+FROM mtgupf/essentia:ubuntu18.04-v2.1_beta5
 
 WORKDIR /tmp
 ADD install_kaldi.sh .
