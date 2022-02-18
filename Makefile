@@ -1,8 +1,8 @@
 build:
-	docker build -t mtg-docker.sb.upf.edu/kaldi:ubuntu18.04 .
+	docker build -t registry.sb.upf.edu/mtg/kaldi:ubuntu18.04 .
 
 push:
-	docker push mtg-docker.sb.upf.edu/kaldi:ubuntu18.04
+	docker push registry.sb.upf.edu/mtg/kaldi:ubuntu18.04
 
 all: build push
 
